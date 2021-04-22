@@ -4,8 +4,9 @@ public class Main {
     }
 
     public static void Application () {
+        System.out.println("Welcome to the library");
 
     }
 }
 
-// by Adam Campbell, Adam Jukes, Tom Drew, Jack Merritt and Matt "to be added".
+
