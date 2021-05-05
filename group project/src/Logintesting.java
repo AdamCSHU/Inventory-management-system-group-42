@@ -48,7 +48,7 @@ public class Logintesting {
 
     }
     public static void Incorrect() {
-        System.out.println("repeat 3 times done");
+        System.out.println("Incorrect login, try again.");
     }
 
     public static void account_screen_admin () {
