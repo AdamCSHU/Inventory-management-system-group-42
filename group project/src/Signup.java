@@ -10,6 +10,6 @@ public class Signup {
     }
 
     public static void SignUp() {
-
+        System.out.println("Sign up using the form below: ");
     }
 }
