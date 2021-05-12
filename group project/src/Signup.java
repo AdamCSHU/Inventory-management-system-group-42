@@ -1,4 +1,5 @@
 import java.io.*;
+import java.net.PasswordAuthentication;
 import java.util.*;
 import java.util.List;
 import java.util.Scanner;
@@ -24,6 +25,7 @@ public class Signup {
         //System.out.println("Enter an Email: ");
         //String Email = in.nextLine();
 
+        System.out.println("Password must be longer than 5 characters");
         System.out.println("Enter a Password: ");
         String Password = in.nextLine();
 
@@ -35,10 +37,22 @@ public class Signup {
 
         String filepath = "members.txt";
 
+        if(Password.length() > 5) {
+            System.out.println("Password is valid.");
+            SaveDetails(Name, Password, filepath);
+        }else{
+            System.out.println("Password is too short, try again");
+            Sign_up();
+        }
+
         //SaveDetails(Name, Email, Password, filepath, Age, Gender);
-        SaveDetails(Name, Password, filepath);
+        //SaveDetails(Name, Password, filepath);
     }
 
+    public static void valid ()
+    {
+        System.out.println("Valid");
+    }
 
     //The function below saves a a person's details. These details will be entered using the sign up form.
 
