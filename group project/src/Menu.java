@@ -32,7 +32,7 @@ public class Menu {
 
             //switch case directs user choice to correct function. If input is not those listed, an error is shown.
             switch (user_choice) {
-                case 1 -> Logintesting.login();
+                case 1 -> Login.login();
                 case 2 -> Signup.SignUp();
                 case 12 -> System.exit(0);
                 default -> System.out.println("Invalid input! Try again: ");
