@@ -19,8 +19,8 @@ public class Signup {
     public static void Sign_up() {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Enter a Name: ");
-        String Name = in.nextLine();
+        System.out.println("Enter your Email: ");
+        String Email = in.nextLine();
 
         //System.out.println("Enter an Email: ");
         //String Email = in.nextLine();
@@ -28,6 +28,18 @@ public class Signup {
         System.out.println("Password must be longer than 5 characters");
         System.out.println("Enter a Password: ");
         String Password = in.nextLine();
+
+        System.out.println("Enter your full name: ");
+        String Full_Name = in.nextLine();
+
+        System.out.println("Enter your Phone Number: ");
+        String Phone_Number = in.nextLine();
+
+        System.out.println("Enter your Address: ");
+        String Address = in.nextLine();
+
+        System.out.println("Enter your date of birth: ");
+        String DOB = in.nextLine();
 
         //System.out.println("Enter an Age: ");
         //String Age = in.nextLine();
@@ -39,7 +51,7 @@ public class Signup {
 
         if(Password.length() > 5) {
             System.out.println("Password is valid.");
-            SaveDetails(Name, Password, filepath);
+            SaveDetails(Email, Password, Full_Name, Phone_Number, Address, DOB, filepath);
         }else{
             System.out.println("Password is too short, try again");
             Sign_up();
@@ -56,19 +68,27 @@ public class Signup {
 
     //The function below saves a a person's details. These details will be entered using the sign up form.
 
-    public static void SaveDetails(String Name, String Password, String filepath) {
+    public static void SaveDetails( String Email, String Password, String Full_Name, String Phone_Number, String Address, String DOB, String filepath) {
 
         Scanner in = new Scanner(System.in);
 
-        Name = Name;
+        Email = Email;
 
         //Email = Email;
 
         Password = Password;
 
+        Full_Name = Full_Name;
+
        // Age = Age;
 
+        Phone_Number = Phone_Number;
+
         //Gender = Gender;
+
+        Address = Address;
+
+        DOB = DOB;
 
         filepath = filepath;
 
@@ -77,7 +97,7 @@ public class Signup {
             BufferedWriter save_bw = new BufferedWriter(save);
             PrintWriter save_pw = new PrintWriter(save_bw);
 
-            save_pw.println(Name + "," + Password + "" +
+            save_pw.println(Email + "," + Password + "," + Full_Name + "," + Phone_Number + "," + Address + "," + DOB +
                     "");
             save_pw.flush();
             save_pw.close();

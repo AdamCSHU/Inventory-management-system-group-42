@@ -12,7 +12,7 @@ public class Logintesting {
     public static void login() {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Username: ");
+        System.out.println("Email: ");
         String username = in.next();
         System.out.println("Password; ");
         String password = in.next();
