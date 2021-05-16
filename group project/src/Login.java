@@ -39,6 +39,8 @@ public class Login {
                 if (tempuser.trim().equals(username.trim()) && temppass.trim().equals(password.trim())) {
                     found = true;
                     System.out.println("Welcome!");
+                    currentuser.setthisuser(username);
+
                     user_screen();
                 }
             }
@@ -114,7 +116,7 @@ public class Login {
         System.out.println("Select an option:");
         System.out.println("1: List users");
         System.out.println("2: Manage users");
-        System.out.println("12: Go back");
+        System.out.println("12: Logout");
 
         System.out.println("Enter an Option");
     }
@@ -133,6 +135,16 @@ public class Login {
         System.out.println("Enter an Option");
     }
 
+
+
+    public static void manageuser(){
+
+
+
+
+    }
+
+
     public static void list_users() {
         System.out.println("List of users below: ");
     }
@@ -140,12 +152,37 @@ public class Login {
 
 
     public static void manage_users() {
+        String username =  currentuser.getthisuser();
+        boolean found = false;
+        String input = "";
+        String filepath = "members.txt";
+
+
+        try {
+            Scanner read = new Scanner(new File(filepath));
+            read.useDelimiter("[,\n]");
+            while ((read.hasNext() && found) == false) {
+                input = read.next();
+                if (input.equals((username))) {
+                    System.out.println(input + read.nextLine());
+                    found = true;
+
+                    break;
+                }
+                System.out.println("not found");
+                break;
+
+
+            }
+        } catch (IOException e) {
+
+        }
 
         Scanner in = new Scanner(System.in);
 
         System.out.println("Enter a search term: ");
 
-        String filepath = "members.txt";
+        filepath = "members.txt";
         String searchterm = in.nextLine();
 
         read(searchterm, filepath);

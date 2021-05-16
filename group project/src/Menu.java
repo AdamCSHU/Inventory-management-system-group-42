@@ -34,7 +34,8 @@ public class Menu {
             switch (user_choice) {
                 case 1 -> Login.login();
                 case 2 -> Signup.SignUp();
-                case 12 -> System.exit(0);
+                case 3 -> emplogin.emplogin();
+                case 0 -> System.exit(0);
                 default -> System.out.println("Invalid input! Try again: ");
             }
         }
@@ -42,13 +43,17 @@ public class Menu {
 
     //displays menu
     public static void menu() {
+        //current user reset here.......
+
+
         System.out.println("\n");
         System.out.println("\nLibrary System");
         System.out.println("--------------------");
         System.out.println("Select an option:");
         System.out.println("1: Login");
         System.out.println("2: Sign Up");
-        System.out.println("12: Exit");
+        System.out.println("3: employee login");
+        System.out.println("0: Exit");
 
         System.out.println("Enter an Option");
     }

@@ -17,6 +17,7 @@ public class Signup {
 
     //main function of the game class, it will allow the user to save game info to "database.csv"
     public static void Sign_up() {
+        String Password = "";
         Scanner in = new Scanner(System.in);
 
         System.out.println("Enter your Email: ");
@@ -24,10 +25,13 @@ public class Signup {
 
         //System.out.println("Enter an Email: ");
         //String Email = in.nextLine();
+        do {
+            System.out.println("Password must be longer than 5 characters");
+            System.out.println("Enter a Password: ");
+            Password = in.nextLine();
+        }
+        while (Password.length() < 6) ;
 
-        System.out.println("Password must be longer than 5 characters");
-        System.out.println("Enter a Password: ");
-        String Password = in.nextLine();
 
         System.out.println("Enter your full name: ");
         String Full_Name = in.nextLine();
@@ -49,13 +53,8 @@ public class Signup {
 
         String filepath = "members.txt";
 
-        if(Password.length() > 5) {
-            System.out.println("Password is valid.");
-            SaveDetails(Email, Password, Full_Name, Phone_Number, Address, DOB, filepath);
-        }else{
-            System.out.println("Password is too short, try again");
-            Sign_up();
-        }
+
+        SaveDetails(Email, Password, Full_Name, Phone_Number, Address, DOB, filepath);
 
         //SaveDetails(Name, Email, Password, filepath, Age, Gender);
         //SaveDetails(Name, Password, filepath);

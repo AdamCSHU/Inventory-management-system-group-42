@@ -1,1 +1,3 @@
 adam@example.com,password,adam C,0000000,123 example lane,10/12/1992
+jackrmerritt@outlook.com,123456,Jack Merritt,07747474774,hghgh,020202
+String username =  currentuser.getthisuser();,                boolean found = false;,                String input = "";,                String filepath = "employees.txt";,,
