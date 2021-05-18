@@ -24,8 +24,6 @@ public class emplogin {
         boolean found = false;
         String tempuser = "";
         String temppass = "";
-        String adminusr = "admin";
-        String adminpass = "password1";
 
         try {
             x = new Scanner(new File(filepath));

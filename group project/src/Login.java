@@ -56,7 +56,7 @@ public class Login {
         System.out.println("Incorrect login, try again.");
     }
 
-    public static void user_screen() {
+    public static void user_screen() throws IOException {
 
         Scanner in = new Scanner(System.in);
 
@@ -76,50 +76,16 @@ public class Login {
             switch (user_choice) {
                 case 1 -> list_users();
                 case 2 -> manage_users();
-                case 12 -> Menu.menu_display();
+                case 0 -> Menu.menu_display();
                 default -> System.out.println("Invalid input! Try again: ");
             }
         }
     }
 
-    public static void account_screen_admin () {
 
-        Scanner in = new Scanner(System.in);
-
-        //creates menu input int
-        int user_choice;
-
-        //while loop keeps program running til valid option is selected
-        while (true)  {
-
-            //calls menu function and displays it
-            menu();
-
-            //allows for user_choice input
-            user_choice = in.nextInt();
-
-            //switch case directs user choice to correct function. If input is not those listed, an error is shown.
-            switch (user_choice) {
-                case 1 -> list_users();
-                case 2 -> manage_users();
-                case 12 -> Menu.menu_display();
-                default -> System.out.println("Invalid input! Try again: ");
-            }
-        }
-    }
 
     //displays menu
-    public static void menu() {
-        System.out.println("\n");
-        System.out.println("\nAdmin Console");
-        System.out.println("--------------------");
-        System.out.println("Select an option:");
-        System.out.println("1: List users");
-        System.out.println("2: Manage users");
-        System.out.println("12: Logout");
 
-        System.out.println("Enter an Option");
-    }
 
     //displays user menu
     public static void user_menu() {
@@ -128,9 +94,9 @@ public class Login {
         System.out.println("--------------------");
         System.out.println("Select an option:");
         System.out.println("1: List books in stock");
-        System.out.println("2: Mangage account");
+        System.out.println("2: Manage account");
         System.out.println("3: View due books");
-        System.out.println("12: Go back");
+        System.out.println("0: Go back");
 
         System.out.println("Enter an Option");
     }
@@ -151,41 +117,68 @@ public class Login {
 
 
 
-    public static void manage_users() {
-        String username =  currentuser.getthisuser();
+    public static void manage_users() throws IOException {
+        System.out.println("you have selected view account");
+        String username = currentuser.getthisuser();
         boolean found = false;
         String input = "";
         String filepath = "members.txt";
+        searchRecord(filepath, username,1,",");
 
+
+
+
+        user_menu();
+
+
+
+    }
+
+
+    public static void searchRecord(String filepath, String searchterm, int pos, String delim) throws IOException {
+        int position = pos-1;
+        String tempfile = "blank.txt";
+        File oldfile = new File(filepath);
+        File newfile = new File(tempfile);
+        String currentline;
+        String data[];
+        String output;
 
         try {
-            Scanner read = new Scanner(new File(filepath));
-            read.useDelimiter("[,\n]");
-            while ((read.hasNext() && found) == false) {
-                input = read.next();
-                if (input.equals((username))) {
-                    System.out.println(input + read.nextLine());
-                    found = true;
+            FileWriter fw = new FileWriter(tempfile,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
 
-                    break;
+            FileReader fr = new FileReader(filepath);
+            BufferedReader br = new BufferedReader(fr);
+
+            while ((currentline =  br.readLine()) != null)
+            {
+                data = currentline.split(",");
+                if ((data[position].equalsIgnoreCase(searchterm)))
+                {
+                    output = currentline;
+                    System.out.println(output);
                 }
-                System.out.println("not found");
-                break;
 
 
             }
-        } catch (IOException e) {
+            pw.flush();
+            pw.close();
+            fr.close();
+            br.close();
+            bw.close();
+            fw.close();
+
+
+
+        }
+        catch (IOException e)
+        {
 
         }
 
-        Scanner in = new Scanner(System.in);
 
-        System.out.println("Enter a search term: ");
-
-        filepath = "members.txt";
-        String searchterm = in.nextLine();
-
-        read(searchterm, filepath);
     }
 
     private static Scanner test;

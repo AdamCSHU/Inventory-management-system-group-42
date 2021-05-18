@@ -35,6 +35,7 @@ public class Menu {
                 case 1 -> Login.login();
                 case 2 -> Signup.SignUp();
                 case 3 -> emplogin.emplogin();
+                case 4 -> adminlogin.admlogin();
                 case 0 -> System.exit(0);
                 default -> System.out.println("Invalid input! Try again: ");
             }
@@ -53,6 +54,7 @@ public class Menu {
         System.out.println("1: Login");
         System.out.println("2: Sign Up");
         System.out.println("3: employee login");
+        System.out.println("4: admin login");
         System.out.println("0: Exit");
 
         System.out.println("Enter an Option");
