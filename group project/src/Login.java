@@ -74,8 +74,10 @@ public class Login {
 
             //switch case directs user choice to correct function. If input is not those listed, an error is shown.
             switch (user_choice) {
-                case 1 -> list_users();
+                case 1 -> list_books();
                 case 2 -> manage_users();
+                case 3 -> searchloan();
+                case 4 -> loanbooks.loans();
                 case 0 -> Menu.menu_display();
                 default -> System.out.println("Invalid input! Try again: ");
             }
@@ -96,6 +98,7 @@ public class Login {
         System.out.println("1: List books in stock");
         System.out.println("2: Manage account");
         System.out.println("3: View due books");
+        System.out.println("4: loan book.... ");
         System.out.println("0: Go back");
 
         System.out.println("Enter an Option");
@@ -111,10 +114,59 @@ public class Login {
     }
 
 
-    public static void list_users() {
-        System.out.println("List of users below: ");
+    public static void list_books() {
+        System.out.println("List of books below: ");
+        String filepath = "books.txt";
+        String tempfile = "blank2.txt";
+        File oldfile = new File (filepath);
+        File newfile = new File (tempfile);
+
+        String currentline;
+        String data[];
+
+        try {
+            FileWriter fw = new FileWriter(tempfile,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            FileReader fr = new FileReader(filepath);
+            BufferedReader br = new BufferedReader(fr);
+
+            while ((currentline =  br.readLine()) != null)
+            {
+                data = currentline.split(",");
+                {
+                    System.out.println(currentline);
+                }
+
+
+            }
+            pw.flush();
+            pw.close();
+            fr.close();
+            br.close();
+            bw.close();
+            fw.close();
+
+
+
+        }
+        catch (IOException e)
+        {
+
+        }
+
+
+
+        
     }
 
+    public static void searchloan() throws IOException{
+        System.out.println("you have selected to check your loans");
+        String filepath = "Loans.txt";
+        String username = currentuser.getthisuser();
+        searchRecord(filepath, username,1,",");
+    }
 
 
     public static void manage_users() throws IOException {

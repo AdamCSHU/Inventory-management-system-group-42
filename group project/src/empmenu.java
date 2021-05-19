@@ -20,6 +20,7 @@ public class empmenu {
         System.out.println("3: delete users");
         System.out.println("4: delete books");
         System.out.println("5: view account details ");
+        System.out.println("6: remove loaned books");
         System.out.println("0: Logout");
 
 
@@ -137,6 +138,18 @@ public class empmenu {
 
                 empmenus();
                 break;
+            case 6:
+                filepath = "Loans.txt";
+                System.out.println("Enter the ID of the loan...");
+                Scanner w = new Scanner(System.in);
+                String delete = w.nextLine();
+                removeRecord(filepath, delete, 5, ",");
+
+
+
+
+                empmenus();
+                break;
 
             case 0:
 
@@ -180,6 +193,7 @@ public class empmenu {
 
 
             }
+            System.out.println("record removed");
             pw.flush();
             pw.close();
             fr.close();
@@ -204,8 +218,6 @@ public class empmenu {
     public static void searchRecord(String filepath, String searchterm, int pos, String delim) throws IOException {
         int position = pos-1;
         String tempfile = "blank.txt";
-        File oldfile = new File(filepath);
-        File newfile = new File(tempfile);
         String currentline;
         String data[];
         String output;
